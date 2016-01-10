@@ -48,6 +48,71 @@ public class QuadForm {
 		calcSupport();
 	}
 	
+	public QuadForm (int key) {
+		switch (key) {
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			monomials.set(21);
+			break;
+		case 3:
+			monomials.set(15);
+			break;
+		case 4:
+			monomials.set(15);
+			monomials.set(21);
+		case 5:
+			monomials.set(0);
+			break;
+		case 6:
+			monomials.set(0);
+			monomials.set(21);
+			break;
+		case 7:
+			monomials.set(0);
+			monomials.set(17);
+			break;
+		case 8:
+			monomials.set(0);
+			monomials.set(17);
+			monomials.set(21);
+			break;
+		case 9:
+			monomials.set(0);
+			monomials.set(9);
+			break;
+		case 10:
+			monomials.set(0);
+			monomials.set(9);
+			monomials.set(21);
+			break;
+		case 11:
+			monomials.set(0);
+			monomials.set(9);
+			monomials.set(19);
+			break;
+		case 12:
+			monomials.set(0);
+			monomials.set(9);
+			monomials.set(19);
+			monomials.set(21);
+			break;
+		case 13:
+			monomials.set(0);
+			monomials.set(9);
+			monomials.set(14);
+			break;
+		case 14:
+			monomials.set(0);
+			monomials.set(9);
+			monomials.set(14);
+			monomials.set(21);
+			break;
+		}
+	}
+	
 	/**
 	 * getter method for the rank of this quadratic form.
 	 * @return - rank.
@@ -70,6 +135,14 @@ public class QuadForm {
 	 */
 	public BitSet getMonomials() {
 		return monomials;
+	}
+	
+	/**
+	 * setter methdo for the BitSet representation of monomials in the quadratic form.
+	 * @param monomials
+	 */
+	public void setMonomials(BitSet monomials) {
+		this.monomials = monomials;
 	}
 	
 	/**

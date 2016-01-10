@@ -21,7 +21,25 @@ public class QuadCharacter {
 		twos = f.twos;
 	}
 	
+	public QuadCharacter (int key) {
+		this.quadForm = new QuadForm(key);
+		f = new Function(this);
+		f.populateFunctionVectors();
+		ones = f.ones;
+		twos = f.twos;
+	}
+	
+	public QuadCharacter (BitSet monomials) {
+		this.quadForm = new QuadForm();
+		this.quadForm.setMonomials(monomials);
+	}
+	
 	public String toString() {
 		return "\nQuadratic Form: " + quadForm.toString() + "\nOnes: " + ones + "\nTwos: " + twos;
+	}
+	
+	public boolean equals(Object o) {
+		QuadCharacter other = (QuadCharacter)o;
+		return this.ones.equals(other.ones) && this.twos.equals(other.twos);
 	}
 }
