@@ -15,7 +15,6 @@ public class QuadraticCharacterTest {
 	@Test
 	public void testQuadFormSubtract() {
 		QuadForm q = new QuadForm();
-		q.getMonomials().clear();
 		q.getMonomials().set(0);
 		q.getMonomials().set(1);
 		BitSet b = new BitSet();
@@ -28,9 +27,40 @@ public class QuadraticCharacterTest {
 	}
 	
 	@Test
+	public void testWittNormalForm() {
+		QuadForm u1 = new QuadForm(1);
+		QuadForm u2 = new QuadForm(2);
+		QuadForm u3 = new QuadForm(3);
+		QuadForm u4 = new QuadForm(4);
+		QuadForm u5 = new QuadForm(5);
+		QuadForm u6 = new QuadForm(6);
+		QuadForm u7 = new QuadForm(7);
+		QuadForm u8 = new QuadForm(8);
+		QuadForm u9 = new QuadForm(9);
+		QuadForm u10 = new QuadForm(10);
+		QuadForm u11 = new QuadForm(11);
+		QuadForm u12 = new QuadForm(12);
+		QuadForm u13 = new QuadForm(13);
+		QuadForm u14 = new QuadForm(14);
+		System.out.println("{} " + u1);
+		System.out.println("{21} " + u2);
+		System.out.println("{15} " + u3);
+		System.out.println("{15, 21} " + u4);
+		System.out.println("{0} " + u5);
+		System.out.println("{0, 21} " + u6);
+		System.out.println("{0, 17} " + u7);
+		System.out.println("{0, 17, 21} " + u8);
+		System.out.println("{0, 9} " + u9);
+		System.out.println("{0, 9, 21} " + u10);
+		System.out.println("{0, 9, 19} " + u11);
+		System.out.println("{0, 9, 19, 21} " + u12);
+		System.out.println("{0, 9, 14} " + u13);
+		System.out.println("{0, 9, 14, 21} " + u14);
+	}
+	
+	@Test
 	public void testWittDecompStep() {
 		QuadForm q = new QuadForm();
-		q.getMonomials().clear();
 		q.getMonomials().set(0);
 		q.getMonomials().set(2);
 		q.getMonomials().set(6);

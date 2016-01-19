@@ -39,6 +39,7 @@ public class QuadCharacterGenerator {
 				}
 			}
 			QuadCharacter u = new QuadCharacter(i); // this represents the quadratic character with the current Witt Normal form as its quadratic form, or 2^u
+			
 			for (int x1 = 0; x1 < 2; x1++) {
 			for (int x2 = 0; x2 < 2; x2++) {
 			for (int x3 = 0; x3 < 2; x3++) {
@@ -82,6 +83,11 @@ public class QuadCharacterGenerator {
 				
 				int numOnes = f.ones.cardinality(); // get the number of 1's of the function
 				int numTwos = f.twos.cardinality(); // get the number of 2's of the function
+				
+				if (numOnes == 0 && numTwos == 48) {
+					System.out.println("NF form: " + u + "Other form: " + v);
+				}
+				
 				supportTable[numOnes][numTwos] = supportTable[numOnes][numTwos].add(BigInteger.valueOf(1)); // add one to the 1's, 2's distribution at the correct location
 			}}}}}}}}}}}}}}}}}}}}}}
 			
@@ -90,27 +96,41 @@ public class QuadCharacterGenerator {
 			
 			BigInteger s = BigInteger.valueOf(0);
 			
+			writer.println("WNF: " + i);
 			for (int k = 0; k < 65; k++) {
 				writer.println(Arrays.toString(supportTable[k]));
 				for (int j = 0; j < 65; j++) {
 					s = s.add(supportTable[k][j]); // summing all values in the local support table
 				}
 			}
+			writer.println();
 			System.out.println("This value should be equal to 4194304: " + s); // check to make sure we generated the correct number of functions
 			
 			totalSupportTable = weightedSum(totalSupportTable, supportTable, i); // add the local support table to the global one, which accounts for all 14 WNF functions
 		}
+		BigInteger s = BigInteger.valueOf(0);
+				
 		System.out.println("Number of 2-weight 3 functions generated: " + count);
 		for (int i = 0; i < 65; i++) {
 			writer.println(Arrays.toString(totalSupportTable[i])); // write global support table to file for inspection 
 			System.out.println(Arrays.toString(totalSupportTable[i]));
+			for (int j = 0; j < 65; j++) {
+				s = s.add(totalSupportTable[i][j]);
+			}
 		}
+		System.out.println("This value should be equal to 58720256: " + s);
 		writer.close();
 	}
 	
 	public static BigInteger[][] weightedSum(BigInteger[][] totalSupportTable, BigInteger[][] supportTable, int i) {
 		switch (i) {
 		case 1:
+			for (int k = 0; k < 65; k++) {
+				for (int j = 0; j < 65; j++) {
+					totalSupportTable[k][j] = totalSupportTable[k][j].add(supportTable[k][j].multiply(BigInteger.valueOf(1)));
+				}
+			}
+			break;
 		case 2:
 			for (int k = 0; k < 65; k++) {
 				for (int j = 0; j < 65; j++) {
@@ -119,6 +139,12 @@ public class QuadCharacterGenerator {
 			}
 			break;
 		case 3:
+			for (int k = 0; k < 65; k++) {
+				for (int j = 0; j < 65; j++) {
+					totalSupportTable[k][j] = totalSupportTable[k][j].add(supportTable[k][j].multiply(BigInteger.valueOf(63)));
+				}
+			}
+			break;
 		case 4:
 			for (int k = 0; k < 65; k++) {
 				for (int j = 0; j < 65; j++) {
@@ -127,6 +153,12 @@ public class QuadCharacterGenerator {
 			}
 			break;
 		case 5:
+			for (int k = 0; k < 65; k++) {
+				for (int j = 0; j < 65; j++) {
+					totalSupportTable[k][j] = totalSupportTable[k][j].add(supportTable[k][j].multiply(BigInteger.valueOf(2604)));
+				}
+			}
+			break;
 		case 6:
 			for (int k = 0; k < 65; k++) {
 				for (int j = 0; j < 65; j++) {
@@ -135,6 +167,12 @@ public class QuadCharacterGenerator {
 			}
 			break;
 		case 7:
+			for (int k = 0; k < 65; k++) {
+				for (int j = 0; j < 65; j++) {
+					totalSupportTable[k][j] = totalSupportTable[k][j].add(supportTable[k][j].multiply(BigInteger.valueOf(39060)));
+				}
+			}
+			break;
 		case 8:
 			for (int k = 0; k < 65; k++) {
 				for (int j = 0; j < 65; j++) {
@@ -143,6 +181,12 @@ public class QuadCharacterGenerator {
 			}
 			break;
 		case 9:
+			for (int k = 0; k < 65; k++) {
+				for (int j = 0; j < 65; j++) {
+					totalSupportTable[k][j] = totalSupportTable[k][j].add(supportTable[k][j].multiply(BigInteger.valueOf(291648)));
+				}
+			}
+			break;
 		case 10:
 			for (int k = 0; k < 65; k++) {
 				for (int j = 0; j < 65; j++) {
@@ -151,6 +195,12 @@ public class QuadCharacterGenerator {
 			}
 			break;
 		case 11:
+			for (int k = 0; k < 65; k++) {
+				for (int j = 0; j < 65; j++) {
+					totalSupportTable[k][j] = totalSupportTable[k][j].add(supportTable[k][j].multiply(BigInteger.valueOf(874944)));
+				}
+			}
+			break;
 		case 12:
 			for (int k = 0; k < 65; k++) {
 				for (int j = 0; j < 65; j++) {
@@ -159,6 +209,12 @@ public class QuadCharacterGenerator {
 			}
 			break;
 		case 13:
+			for (int k = 0; k < 65; k++) {
+				for (int j = 0; j < 65; j++) {
+					totalSupportTable[k][j] = totalSupportTable[k][j].add(supportTable[k][j].multiply(BigInteger.valueOf(888832)));
+				}
+			}
+			break;
 		case 14:
 			for (int k = 0; k < 65; k++) {
 				for (int j = 0; j < 65; j++) {

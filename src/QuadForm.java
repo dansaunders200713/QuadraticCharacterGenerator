@@ -38,10 +38,12 @@ public class QuadForm {
 	/**
 	 * This constructor creates a random quadratic form.
 	 */
-	public QuadForm () {
+	public QuadForm () {}
+	
+	public void generateRandomQuadForm () {
 		for (int i = 0; i < 22; i++) {
 			if (rand.nextInt(2) == 1) {
-				monomials.set(i);
+				this.monomials.set(i);
 			}
 		}
 		wittDecomp();
@@ -49,6 +51,7 @@ public class QuadForm {
 	}
 	
 	public QuadForm (int key) {
+		monomials.clear();
 		switch (key) {
 		case 0:
 			break;
@@ -63,6 +66,7 @@ public class QuadForm {
 		case 4:
 			monomials.set(15);
 			monomials.set(21);
+			break;
 		case 5:
 			monomials.set(0);
 			break;
@@ -111,6 +115,8 @@ public class QuadForm {
 			monomials.set(21);
 			break;
 		}
+		wittDecomp();
+		calcSupport();
 	}
 	
 	/**
@@ -296,7 +302,7 @@ public class QuadForm {
 	 * evaluates to 1. This method relies on the helper method evalToOne().
 	 * @return - support, an integer specifying the above.
 	 */
-	private void calcSupport() {
+	public void calcSupport() {
 		int support = 0;
 		for (int x1 = 0; x1 < 2; x1++) {
 			for (int x2 = 0; x2 < 2; x2++) {

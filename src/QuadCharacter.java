@@ -15,6 +15,7 @@ public class QuadCharacter {
 	
 	public QuadCharacter () {
 		this.quadForm = new QuadForm();
+		this.quadForm.generateRandomQuadForm();
 		f = new Function(this);
 		f.populateFunctionVectors();
 		ones = f.ones;
@@ -32,6 +33,10 @@ public class QuadCharacter {
 	public QuadCharacter (BitSet monomials) {
 		this.quadForm = new QuadForm();
 		this.quadForm.setMonomials(monomials);
+		f = new Function(this);
+		f.populateFunctionVectors();
+		ones = f.ones;
+		twos = f.twos;
 	}
 	
 	public String toString() {
